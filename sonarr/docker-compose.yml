@@ -1,0 +1,16 @@
+version: '3'
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1001
+      - PGID=115
+      - TZ=Europe/Madrid
+    volumes:
+      - ~/volumes/sonarr:/config
+      - /data/media/tvseries:/data/tvseries
+      - /data/torrents:/data/torrents
+    ports:
+      - 8989:8989
+    restart: unless-stopped
